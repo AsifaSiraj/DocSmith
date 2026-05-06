@@ -161,6 +161,97 @@ const greet = (name: string): string => `Hello, ${name}!`;
 const greet = (name: string): string => `Hello, ${name}!`;
 ~~~
 
+## 🧠 Intelligent Description Generation
+
+DocSmith automatically generates context-aware descriptions based on function naming:
+
+| Prefix        | Generated Description        |
+|--------------|-----------------------------|
+| get*         | "Gets data"                 |
+| fetch*       | "Fetches data"              |
+| create*      | "Creates something"         |
+| update*      | "Updates something"         |
+| delete*      | "Deletes something"         |
+| calculate*   | "Calculates value"          |
+| is*/has*     | "Checks condition"          |
+| Other        | "{functionName} function"   |
+
+---
+
+## ⚡ Error Detection
+
+DocSmith analyzes function bodies to detect thrown errors:
+
+~~~typescript
+function processData(data: any) {
+  if (!data) throw new Error("Data required");
+  if (typeof data !== 'object') throw new TypeError("Invalid type");
+  // Detected: Error, TypeError
+}
+~~~
+
+The generated documentation includes `@throws` tags for each unique error type found.
+
+---
+
+## 🎮 Commands
+
+| Command                        | Description                                      | Shortcut         |
+|-------------------------------|--------------------------------------------------|------------------|
+| docsmith.generateForFunction  | Generate docs for function at cursor             | Click CodeLens   |
+| docsmith.generateForFile      | Generate docs for all undocumented functions     | Click status bar |
+
+---
+
+## 📋 Requirements
+
+- VS Code version **1.80.0 or higher**
+- Works with TypeScript/JavaScript projects (optional)
+
+---
+
+## ⚙️ Extension Settings
+
+This extension contributes the following settings:
+
+| Setting                  | Type    | Default  | Description                                           |
+|--------------------------|--------|----------|-------------------------------------------------------|
+| docsmith.style           | string | "jsdoc"  | Documentation style (jsdoc or tsdoc)                 |
+| docsmith.warnOnMissing   | boolean| true     | Show warnings for undocumented exported functions    |
+| docsmith.detectThrows    | boolean| true     | Auto-detect throw statements in function bodies      |
+| docsmith.includeExamples | boolean| true     | Include example tags in generated documentation      |
+
+---
+
+## ⚠️ Known Issues
+
+- Arrow function detection may not work for complex nested cases  
+- `@throws` detection uses regex and may miss dynamic errors  
+- Generic constraints are not fully detailed  
+
+---
+
+## 📦 Release Notes
+
+### 1.0.0
+- Initial release  
+- Support for function declarations, class methods, and arrow functions  
+- JSDoc and TSDoc generation  
+- CodeLens integration  
+- Diagnostics for missing documentation  
+- Status bar coverage indicator  
+
+---
+
+## 🚧 Planned Features
+
+- React hooks documentation  
+- Custom documentation templates  
+- Workspace-wide documentation  
+- JSDoc/TSDoc validation integration  
+- Support for Vue and Svelte files  
+- AI-powered description generation  
+
 ## Installation
 
 ### From VS Code Marketplace
