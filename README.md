@@ -80,13 +80,15 @@ Search for **"docsmith"** and configure as needed:
 ### Function Declarations
 
 #### Before
-```typescript
+~~~typescript
 export function calculateTotal(price: number, quantity: number, discount?: number): number {
   if (price < 0) throw new Error("Invalid price");
   return price * quantity - (discount || 0);
 }
-```
+~~~
+
 #### After (JSDoc Generated)
+~~~typescript
 /**
  * Calculates value
  *
@@ -102,15 +104,23 @@ export function calculateTotal(price: number, quantity: number, discount?: numbe
 export function calculateTotal(price: number, quantity: number, discount?: number): number {
   // ... function body
 }
+~~~
 
-###Class Methods
-####Before
+---
+
+### Class Methods
+
+#### Before
+~~~typescript
 class UserService {
   async fetchUser(id: string): Promise<User> {
     // implementation
   }
 }
-####After
+~~~
+
+#### After
+~~~typescript
 class UserService {
   /**
    * Fetches data
@@ -126,11 +136,19 @@ class UserService {
     // implementation
   }
 }
+~~~
 
-###Arrow Functions
-####Before
+---
+
+### Arrow Functions
+
+#### Before
+~~~typescript
 const greet = (name: string): string => `Hello, ${name}!`;
-####After
+~~~
+
+#### After
+~~~typescript
 /**
  * greet function
  *
@@ -141,8 +159,7 @@ const greet = (name: string): string => `Hello, ${name}!`;
  * greet(name)
  */
 const greet = (name: string): string => `Hello, ${name}!`;
-
-
+~~~
 
 ## Installation
 
